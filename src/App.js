@@ -4,43 +4,45 @@ import Player from './components/Player/Player';
 function App() {
   const [songs] = useState([
     {
-      title: "Forget me too ft. Halsey",
-      artist: "Machine Gun Kelly",
-      img_src: "./images/song-1.jpg",
-      src: "./music/on-n-on.mp3"
+      title: "Texas",
+      artist: "Playboi Carti",
+      img_src: "./images/carti.jpg",
+      src: "./music/Texas.m4a"
     },
     {
-      title: "Song 2",
-      artist: "Artist 2",
-      img_src: "./images/song-2.jpg",
-      src: "./music/somebody-new.mp3"
+      title: "Real Rockstar",
+      artist: "Playboi Carti",
+      img_src: "./images/carti.jpg",
+      src: "./music/RealRockstar.m4a"
     },
     {
-      title: "Song 3",
-      artist: "Artist 3",
-      img_src: "./images/song-3.jpg",
-      src: "./music/on-n-on.mp3"
-    },
-    {
-      title: "Song 4",
-      artist: "Artist 4",
-      img_src: "./images/song-4.jpg",
-      src: "./music/somebody-new.mp3"
+      title: "Jump Out The House OG",
+      artist: "Playboi Carti",
+      img_src: "./images/carti.jpg",
+      src: "./music/JumpOutTheHouse.m4a"
     }
   ]);
 
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
 
+  function changeBg() {
+    let background = "#" + ((1<<24)*Math.random() | 0).toString(16);
+    document.body.style.backgroundColor = background;
+  }
+
   useEffect(() => {
     setNextSongIndex(() => {
+
       if (currentSongIndex + 1 > songs.length - 1) {
         return 0;
       } else {
-        return currentSongIndex + 1;
+        return currentSongIndex + 1 + changeBg(); 
       }
     });
   }, [currentSongIndex]);
+
+  
 
   return (
     <div className="App">
